@@ -6,6 +6,4 @@ PRIVATE
 
 target_link_libraries(executable
 PRIVATE
-Cmake_example::lib
-fmt::fmt
-)
+Cmake_example::lib)
