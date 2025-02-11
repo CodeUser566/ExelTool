@@ -1,0 +1,10 @@
+# ninja log v5
+2	21	1739266092738629272	src/ExelParser/librarys/CMakeFiles/lib.dir/Lib.cpp.o	841e89e6f30e99ea
+1	23	1739267702780617877	src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o	3c949999e8a736f
+21	70	1739266092786629775	src/ExelParser/librarys/liblib.a	f1fd68ce62130b55
+23	81	1739267702837618480	src/ExelParser/Executable/executable	8f5be35240c7f991
+1	340	1739267872544414107	src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o	3c949999e8a736f
+340	398	1739267872604414742	src/ExelParser/Executable/executable	8f5be35240c7f991
+1	343	1739268251685426328	src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o	3c949999e8a736f
+344	401	1739268251745426963	src/ExelParser/Executable/executable	8f5be35240c7f991
+1	815	1739268331956275861	src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o	3c949999e8a736f

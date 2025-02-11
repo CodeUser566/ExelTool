@@ -1,0 +1,101 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "src/ExelParser/librarys",
+					"jsonFile" : "directory-src.ExelParser.librarys-Debug-5dc8f3093122c584bdf1.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/ExelParser/librarys",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "src/ExelParser/Executable",
+					"jsonFile" : "directory-src.ExelParser.Executable-Debug-e0904e9a510c8f6ea76a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.25"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src/ExelParser/Executable",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "HelloWorld",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "executable::@785b6d2b8c9bc798bc65",
+					"jsonFile" : "target-executable-Debug-f74dd082aacc120e5f41.json",
+					"name" : "executable",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "lib::@2846b7076304d094699b",
+					"jsonFile" : "target-lib-Debug-df99982940e456fec919.json",
+					"name" : "lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan",
+		"source" : "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

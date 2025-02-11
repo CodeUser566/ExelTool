@@ -1,0 +1,8 @@
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/CMakeFiles/edit_cache.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/CMakeFiles/rebuild_cache.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/librarys/CMakeFiles/lib.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/librarys/CMakeFiles/edit_cache.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/librarys/CMakeFiles/rebuild_cache.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/Executable/CMakeFiles/executable.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/Executable/CMakeFiles/edit_cache.dir
+/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan/src/ExelParser/Executable/CMakeFiles/rebuild_cache.dir

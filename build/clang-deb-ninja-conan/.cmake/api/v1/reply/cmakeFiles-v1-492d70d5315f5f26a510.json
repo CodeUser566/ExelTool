@@ -1,0 +1,241 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-deb-ninja-conan/CMakeFiles/3.28.3/CMakeSystem.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/conan_toolchain.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Linux-Initialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build/clang-deb-ninja-conan/CMakeFiles/3.28.3/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Linux.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/Clang.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Linux-Clang-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/XlntConfigVersion.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/XlntConfig.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/XlntTargets.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/Xlnt-debug-x86_64-data.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/Xlnt-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/libstudxml-config-version.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/libstudxml-config.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/libstudxmlTargets.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/libstudxml-debug-x86_64-data.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/libstudxml-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/expat-config-version.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/expat-config.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/expatTargets.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/expat-debug-x86_64-data.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/expat-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/miniz-config-version.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/miniz-config.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/minizTargets.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/miniz-debug-x86_64-data.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/miniz-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/fmt-config-version.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/fmt-config.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/fmtTargets.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/fmt-debug-x86_64-data.cmake"
+		},
+		{
+			"path" : "conan/deb/build/Debug/generators/fmt-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "src/ExelParser/librarys/CMakeLists.txt"
+		},
+		{
+			"path" : "src/ExelParser/Executable/CMakeLists.txt"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan",
+		"source" : "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

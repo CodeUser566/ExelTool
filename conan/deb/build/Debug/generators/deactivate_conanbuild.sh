@@ -1,0 +1,1 @@
+. "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/conan/deb/build/Debug/generators/deactivate_conanbuildenv-debug-x86_64.sh"

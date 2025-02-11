@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan",
+  "command": "/usr/bin/clang++ -DLIBSTUDXML_STATIC -DXLNT_STATIC -DXML_STATIC -I/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/librarys/includes -isystem /home/gorillabacteria/.conan2/p/b/xlnt848e33c103741/p/include -isystem /home/gorillabacteria/.conan2/p/b/fmtaf509ab6c68e2/p/include -O0 --coverage -g -g -std=c++17 -o src/ExelParser/librarys/CMakeFiles/lib.dir/Lib.cpp.o -c /media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/librarys/Lib.cpp",
+  "file": "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/librarys/Lib.cpp",
+  "output": "src/ExelParser/librarys/CMakeFiles/lib.dir/Lib.cpp.o"
+},
+{
+  "directory": "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/build/clang-deb-ninja-conan",
+  "command": "/usr/bin/clang++ -DLIBSTUDXML_STATIC -DXLNT_STATIC -DXML_STATIC -I/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/librarys/includes -isystem /home/gorillabacteria/.conan2/p/b/xlnt848e33c103741/p/include -isystem /home/gorillabacteria/.conan2/p/b/fmtaf509ab6c68e2/p/include -O0 --coverage -g -g -std=c++17 -o src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o -c /media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/Executable/main.cpp",
+  "file": "/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/src/ExelParser/Executable/main.cpp",
+  "output": "src/ExelParser/Executable/CMakeFiles/executable.dir/main.cpp.o"
+}
+]
