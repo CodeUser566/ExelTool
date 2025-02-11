@@ -7,7 +7,7 @@ class ExampleRecipe(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain"
 
     def requirements(self):
-        self.requires("xlnt/1.5.0")
+        self.requires("fmt/11.1.1")
 
     def layout(self):
         cmake_layout(self)

@@ -1,11 +1,9 @@
 add_library(lib)
 
-#функция для нахождения пакета цели из другой библиотеки
-find_package(Xlnt REQUIRED)
 
 target_link_libraries(lib 
 PRIVATE
- xlnt::xlnt)
+fmt::fmt)
 
 #Добавляет в таргет исходные файлы
 target_sources(lib
