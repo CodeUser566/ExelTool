@@ -3,7 +3,8 @@ add_library(lib)
 
 target_link_libraries(lib 
 PRIVATE
-fmt::fmt)
+fmt::fmt
+xlnt::xlnt)
 
 #Добавляет в таргет исходные файлы
 target_sources(lib

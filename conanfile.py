@@ -8,6 +8,7 @@ class ExampleRecipe(ConanFile):
 
     def requirements(self):
         self.requires("fmt/11.1.1")
+        self.requires("xlnt/1.5.0")
 
     def layout(self):
         cmake_layout(self)

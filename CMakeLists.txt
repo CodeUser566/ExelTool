@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(HelloWorld LANGUAGES CXX)
 
 find_package(fmt REQUIRED)
+find_package(Xlnt REQUIRED)
 
 
 #глобальные настройки с++ стандарта :
