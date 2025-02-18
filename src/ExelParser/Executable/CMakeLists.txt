@@ -7,5 +7,4 @@ PRIVATE
 target_link_libraries(executable
 PRIVATE
 Cmake_example::lib
-xlnt::xlnt
-fmt::fmt)
+xlnt::xlnt)

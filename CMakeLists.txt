@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
-project(HelloWorld LANGUAGES CXX)
+project(ExelParser LANGUAGES CXX)
 
-find_package(fmt REQUIRED)
 find_package(Xlnt REQUIRED)
 
 
