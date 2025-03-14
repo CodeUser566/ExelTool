@@ -1,6 +1,7 @@
 #include <OpenXLSX/headers/XLCell.hpp>
 #include <OpenXLSX/headers/XLCellReference.hpp>
 #include <OpenXLSX/headers/XLDocument.hpp>
+#include <OpenXLSX/headers/XLSheet.hpp>
 #include <OpenXLSX/headers/XLWorkbook.hpp>
 #include <clocale>
 #include <cstdio>
@@ -9,7 +10,6 @@
 #include <list>
 #include <ostream>
 #include <string>
-#include "OpenXLSX/OpenXLSX.hpp"
 
 using namespace std;
 
