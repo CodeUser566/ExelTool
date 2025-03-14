@@ -1,28 +1,37 @@
+#include <OpenXLSX/headers/XLCell.hpp>
+#include <OpenXLSX/headers/XLCellReference.hpp>
+#include <OpenXLSX/headers/XLDocument.hpp>
+#include <OpenXLSX/headers/XLWorkbook.hpp>
 #include <clocale>
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <list>
+#include <ostream>
 #include <string>
+#include "OpenXLSX/OpenXLSX.hpp"
 
 using namespace std;
 
 int main() {
   setlocale(LC_ALL, "ru");
 
-
   //обернуть в функцию, возможно создать класс
   string Path;
   string Line;
   string acc;
-  ifstream CSV_Read;
+  fstream CSV_Read;
   list<string> Headers;
-
+  int lastsym;
   CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
+
+
   cout << "Введите путь до файла:";
-  cin >> Path;
+  getline(cin,Path);
+
   try
   {
-    CSV_Read.open(Path);
+    CSV_Read.open(Path,fstream::in | fstream::out);
   } 
   catch (const ifstream::failure & ex) 
   {
@@ -31,13 +40,18 @@ int main() {
     cout << ex.code() << endl;
   }
 
- getline(CSV_Read,Line);
+//имя файла 
+  lastsym = Path.rfind('/');
+  string Filename = Path.substr(lastsym + 1);
+  Filename.erase(lastsym = Filename.rfind('.'));
 
 
-for (int i = 0; i <= Line.length(); i++) 
-{
+  while (!CSV_Read.eof()) 
+  {
+    getline(CSV_Read,Line);
+    for (int i = 0; i <= Line.length(); i++) 
+  {
   char CurrentSymbol = Line[i];
-
   if (CurrentSymbol == ',')
   {
     Headers.push_front(acc);
@@ -45,13 +59,22 @@ for (int i = 0; i <= Line.length(); i++)
     continue;
   }
   acc += CurrentSymbol;
-}
-if (!acc.empty()) 
-{
+  }
+  if (!acc.empty()) 
+  {
+  acc.erase('\0');
   Headers.push_front(acc);
-}
-  
+  acc.clear();
+  }
+  }
 
-CSV_Read.close();
+  
+  OpenXLSX::XLDocument doc;
+  doc.create("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/" + Filename + ".xlsx");
+  auto wks = doc.workbook().worksheet("Sheet1");
+  doc.save();
+  CSV_Read.close();
+
+  cout << "Bye!" << endl;
   return 0;
 }

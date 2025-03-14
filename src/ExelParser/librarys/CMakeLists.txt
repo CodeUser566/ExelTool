@@ -3,7 +3,7 @@ add_library(lib)
 
 target_link_libraries(lib 
 PRIVATE
-xlnt::xlnt)
+OpenXLSX::OpenXLSX)
 
 #Добавляет в таргет исходные файлы
 target_sources(lib
