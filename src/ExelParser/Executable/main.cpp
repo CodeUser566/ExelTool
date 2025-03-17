@@ -45,11 +45,11 @@ int main() {
   string Filename = Path.substr(lastsym + 1);
   Filename.erase(lastsym = Filename.rfind('.'));
 
-
+//считывание файла
   while (!CSV_Read.eof()) 
   {
     getline(CSV_Read,Line);
-    for (int i = 0; i <= Line.length(); i++) 
+    for (int i = 0; i < Line.size(); i++) 
   {
   char CurrentSymbol = Line[i];
   if (CurrentSymbol == ',')
@@ -62,7 +62,6 @@ int main() {
   }
   if (!acc.empty()) 
   {
-  acc.erase('\0');
   Headers.push_front(acc);
   acc.clear();
   }
