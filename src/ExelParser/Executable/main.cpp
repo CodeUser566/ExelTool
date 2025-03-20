@@ -1,15 +1,12 @@
-#include <OpenXLSX/headers/XLCell.hpp>
-#include <OpenXLSX/headers/XLCellReference.hpp>
-#include <OpenXLSX/headers/XLDocument.hpp>
-#include <OpenXLSX/headers/XLSheet.hpp>
-#include <OpenXLSX/headers/XLWorkbook.hpp>
 #include <clocale>
+#include <cstddef>
 #include <cstdio>
 #include <fstream>
 #include <iostream>
-#include <list>
 #include <ostream>
 #include <string>
+#include <xlsxwriter/workbook.h>
+#include <xlsxwriter/worksheet.h>
 
 using namespace std;
 
@@ -19,15 +16,16 @@ int main() {
   //обернуть в функцию, возможно создать класс
   string Path;
   string Line;
-  string acc;
+  string SavePath;
   fstream CSV_Read;
-  list<string> Headers;
-  int lastsym;
   CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
 
 
   cout << "Введите путь до файла:";
   getline(cin,Path);
+
+  cout << "введите путь сохранения файла:";
+  getline(cin,SavePath);
 
   try
   {
@@ -40,10 +38,20 @@ int main() {
     cout << ex.code() << endl;
   }
 
-//имя файла 
+//имя файла и путь к файлу
+  int lastsym;
   lastsym = Path.rfind('/');
   string Filename = Path.substr(lastsym + 1);
   Filename.erase(lastsym = Filename.rfind('.'));
+  SavePath = SavePath + Filename + ".xlsx";
+  const char* workbookName = SavePath.c_str();
+
+  //создание таблицы и переменных для цикла
+  lxw_workbook *workbook = workbook_new(workbookName);
+  lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
+  int row = 0;
+  int collum = 0;
+  string acc;
 
 //считывание файла
   while (!CSV_Read.eof()) 
@@ -52,26 +60,27 @@ int main() {
     for (int i = 0; i < Line.size(); i++) 
   {
   char CurrentSymbol = Line[i];
-  if (CurrentSymbol == ',')
+  if (CurrentSymbol == ';')
   {
-    Headers.push_front(acc);
+    worksheet_write_string(worksheet, row, collum, acc.c_str(), NULL);
     acc.clear();
+    collum++;
     continue;
   }
   acc += CurrentSymbol;
   }
   if (!acc.empty()) 
   {
-  Headers.push_front(acc);
-  acc.clear();
+   worksheet_write_string(worksheet, row, collum, acc.c_str(), NULL);
+   collum = 0;
+   acc.clear();
+   row++;
   }
   }
-
+  return workbook_close(workbook);
+ 
   
-  OpenXLSX::XLDocument doc;
-  doc.create("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/" + Filename + ".xlsx");
-  auto wks = doc.workbook().worksheet("Sheet1");
-  doc.save();
+
   CSV_Read.close();
 
   cout << "Bye!" << endl;
