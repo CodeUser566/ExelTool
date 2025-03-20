@@ -7,7 +7,7 @@ class ExampleRecipe(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain"
 
     def requirements(self):
-        self.requires("openxlsx/0.4.1")
+        self.requires("libxlsxwriter/1.1.9")
 
     def layout(self):
         cmake_layout(self)

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 project(ExelParser LANGUAGES CXX)
 
-find_package(OpenXLSX REQUIRED)
+find_package(libxlsxwriter REQUIRED)
 
 
 #глобальные настройки с++ стандарта :

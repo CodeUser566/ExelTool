@@ -7,4 +7,4 @@ PRIVATE
 target_link_libraries(executable
 PRIVATE
 Cmake_example::lib
-OpenXLSX::OpenXLSX)
+libxlsxwriter::libxlsxwriter)

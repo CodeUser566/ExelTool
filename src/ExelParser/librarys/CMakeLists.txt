@@ -3,7 +3,7 @@ add_library(lib)
 
 target_link_libraries(lib 
 PRIVATE
-OpenXLSX::OpenXLSX)
+libxlsxwriter::libxlsxwriter)
 
 #Добавляет в таргет исходные файлы
 target_sources(lib
