@@ -12,21 +12,22 @@ using namespace std;
 
 int main() {
   setlocale(LC_ALL, "ru");
-
+  ProgrammStart:
+  cout << "введите цифру для выбора функционала или 0 для выхода из программы :" << endl;
+  int n;
+  cin >> n;
+  while (n != 0) {
+    if (n == 1) {
   //обернуть в функцию, возможно создать класс
   string Path;
   string Line;
   string SavePath;
   fstream CSV_Read;
   CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
-
-
-  cout << "Введите путь до файла:";
+  cout << "Введите путь до файла:" << endl;
   getline(cin,Path);
-
-  cout << "введите путь сохранения файла:";
+  cout << "введите путь сохранения файла:" << endl;
   getline(cin,SavePath);
-
   try
   {
     CSV_Read.open(Path,fstream::in | fstream::out);
@@ -37,7 +38,6 @@ int main() {
     cout << ex.what() << endl;
     cout << ex.code() << endl;
   }
-
 //имя файла и путь к файлу
   int lastsym;
   lastsym = Path.rfind('/');
@@ -45,14 +45,12 @@ int main() {
   Filename.erase(lastsym = Filename.rfind('.'));
   SavePath = SavePath + Filename + ".xlsx";
   const char* workbookName = SavePath.c_str();
-
   //создание таблицы и переменных для цикла
   lxw_workbook *workbook = workbook_new(workbookName);
   lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
   int row = 0;
   int collum = 0;
   string acc;
-
 //считывание файла
   while (!CSV_Read.eof()) 
   {
@@ -62,7 +60,7 @@ int main() {
   char CurrentSymbol = Line[i];
   if (CurrentSymbol == ';')
   {
-    worksheet_write_string(worksheet, row, collum, acc.c_str(), NULL);
+    worksheet_write_string(worksheet, row, collum, acc.c_str(), nullptr);
     acc.clear();
     collum++;
     continue;
@@ -78,11 +76,33 @@ int main() {
   }
   }
   return workbook_close(workbook);
- 
-  
-
   CSV_Read.close();
-
   cout << "Bye!" << endl;
+}
+    if (n == 2) {
+      TryAgain:
+      cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода выберите 0" << endl;
+      int P;
+      cin >> P;
+      if (P==1) 
+      {
+
+      }
+      else if (P==2) 
+      {
+        
+      }
+      else if (P == 0) 
+      {
+        goto ProgrammStart;
+      }
+      else 
+      {
+        cout << "выберите 1 или 2" << endl;
+        goto TryAgain;
+      }
+    }
+}
+cout << "End Programm, Bye!" << endl;
   return 0;
 }
