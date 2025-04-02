@@ -7,6 +7,7 @@
 #include <string>
 #include <xlsxwriter/workbook.h>
 #include <xlsxwriter/worksheet.h>
+#include <../includes/Lib/Lib.hpp>
 
 using namespace std;
 
@@ -92,42 +93,10 @@ int main() {
         if (Year % 4 == 0)
         {
           cout << "введите путь сохранения файла(пока нет реализации) :";
-          lxw_workbook *YearCalendar = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
-          //господи иисусе. Это надо спрятать
-          lxw_worksheet *WorksheetJanuary = workbook_add_worksheet(YearCalendar,"Январь");
-          int row = 0;
-          int col = 0;
-          for (int row;row < 31;row++) 
-          {
-            worksheet_write_number(WorksheetJanuary, row, col, row + 1, nullptr);
-            if (row % 4)
-            {
-              col++;
-            }
-          }
-          lxw_worksheet *WorksheetFebruary = workbook_add_worksheet(YearCalendar,"Февраль");
 
-          lxw_worksheet *WorksheetMarch = workbook_add_worksheet(YearCalendar,"март");
-
-          lxw_worksheet *WorksheetApril = workbook_add_worksheet(YearCalendar,"апрель");
-
-          lxw_worksheet *WorksheetMay = workbook_add_worksheet(YearCalendar,"май");
-
-          lxw_worksheet *WorksheetJune = workbook_add_worksheet(YearCalendar,"июнь");
-
-          lxw_worksheet *WorksheetJuly = workbook_add_worksheet(YearCalendar,"июль");
-
-          lxw_worksheet *WorksheetAugust  = workbook_add_worksheet(YearCalendar,"август");
-
-          lxw_worksheet *WorksheetSeptember = workbook_add_worksheet(YearCalendar,"сентябрь");
-
-          lxw_worksheet *WorksheetOctober = workbook_add_worksheet(YearCalendar,"октябрь");
-
-          lxw_worksheet *WorksheetNovember = workbook_add_worksheet(YearCalendar,"ноябрь");
-
-          lxw_worksheet *WorksheetDecember  = workbook_add_worksheet(YearCalendar,"декабрь");
-
-          workbook_close(YearCalendar);
+          calendar Year("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
+          Year.Insert29Days(1, 1, 1);
+          
           cout << "Календарь создан! Приятного пользования" << endl;
           goto TryAgain;
         }
