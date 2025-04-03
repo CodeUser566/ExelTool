@@ -94,16 +94,24 @@ int main() {
         cin >> Year;
         if (Year % 4 == 0)
         {
-          cout << "введите путь сохранения файла(пока нет реализации) :";
+          cout << "введите путь сохранения файла(пока нет реализации) :" << endl;
           calendar Year;
           Year.MakeYearCalendar();
+          cout << "Календарь создан! Приятного пользования" << endl;
+          goto TryAgain;
+        }
+        else 
+        {
+          cout << "введите путь сохранения файла(пока нет реализации) :" << endl;
+          calendar LeapYear;
+          LeapYear.MakeLeapYearCalendar();
           cout << "Календарь создан! Приятного пользования" << endl;
           goto TryAgain;
         }
       }
       else if (P==2) 
       {
-        //тут стоит использовать словарь ключ-значение
+        
       }
       else if (P == 0) 
       {

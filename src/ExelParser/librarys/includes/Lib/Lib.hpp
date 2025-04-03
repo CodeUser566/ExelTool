@@ -19,7 +19,8 @@ class calendar
     calendar();
     ~calendar();
 
-    void MakeMonthCalendar(int month);
+    void MakeMonthCalendar();
     void MakeYearCalendar();
+    void MakeLeapYearCalendar();
 };
 #endif

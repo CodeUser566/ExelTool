@@ -98,7 +98,36 @@ void calendar::MakeYearCalendar()
   months[12] = workbook_add_worksheet(Calendar,"декабрь");
   Insert31Days(12);
 }
-void calendar::MakeMonthCalendar(int month)
+
+void calendar::MakeLeapYearCalendar()
+{
+  months[1] = workbook_add_worksheet(Calendar,"январь");
+  Insert31Days(1);
+  months[2] = workbook_add_worksheet(Calendar,"февраль");
+  Insert28Days(2);
+  months[3] = workbook_add_worksheet(Calendar,"март");
+  Insert31Days(3);
+  months[4] = workbook_add_worksheet(Calendar,"апрель");
+  Insert30Days(4);
+  months[5] = workbook_add_worksheet(Calendar,"май");
+  Insert31Days(5);
+  months[6] = workbook_add_worksheet(Calendar,"июнь");
+  Insert30Days(6);
+  months[7] = workbook_add_worksheet(Calendar,"июль");
+  Insert31Days(7);
+  months[8] = workbook_add_worksheet(Calendar,"август");
+  Insert31Days(8);
+  months[9] = workbook_add_worksheet(Calendar,"сентябрь");
+  Insert30Days(9);
+  months[10] = workbook_add_worksheet(Calendar,"октябрь");
+  Insert31Days(10);
+  months[11] = workbook_add_worksheet(Calendar,"ноябрь");
+  Insert30Days(11);
+  months[12] = workbook_add_worksheet(Calendar,"декабрь");
+  Insert31Days(12);
+}
+
+void calendar::MakeMonthCalendar()
 {
   
 }
