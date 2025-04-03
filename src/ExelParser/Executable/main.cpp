@@ -15,6 +15,8 @@ int main() {
   setlocale(LC_ALL, "ru");
   ProgrammStart:
   cout << "введите цифру для выбора функционала или 0 для выхода из программы :" << endl;
+  cout << "1)преобразовать CSV в Exel" << endl;
+  cout << "2)Создать календарь" << endl;
   int n;
   cin >> n;
   while (n != 0) {
@@ -93,10 +95,8 @@ int main() {
         if (Year % 4 == 0)
         {
           cout << "введите путь сохранения файла(пока нет реализации) :";
-
-          calendar Year("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
-          Year.Insert29Days(1, 1, 1);
-          
+          calendar Year;
+          Year.Insert29Days(2);
           cout << "Календарь создан! Приятного пользования" << endl;
           goto TryAgain;
         }
