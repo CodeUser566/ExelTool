@@ -7,16 +7,19 @@
 class calendar
 {
     private:
+    lxw_workbook *Calendar = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
     std::map<int, lxw_worksheet*> months;
-    lxw_workbook *YearCalendar = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
-    
-    public:
-    calendar();
-    ~calendar();
+
     void Insert29Days(int month);
     void Insert28Days(int month);
     void Insert30Days(int month);
     void Insert31Days(int month);
-    void MakeCalendar();
+    
+    public:
+    calendar();
+    ~calendar();
+
+    void MakeMonthCalendar(int month);
+    void MakeYearCalendar();
 };
 #endif

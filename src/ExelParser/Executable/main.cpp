@@ -14,7 +14,7 @@ using namespace std;
 int main() {
   setlocale(LC_ALL, "ru");
   ProgrammStart:
-  cout << "введите цифру для выбора функционала или 0 для выхода из программы :" << endl;
+  cout << "введите цифру для выбора функционала или напишите 0 для выхода из программы :" << endl;
   cout << "1)преобразовать CSV в Exel" << endl;
   cout << "2)Создать календарь" << endl;
   int n;
@@ -84,7 +84,7 @@ int main() {
 }
     if (n == 2) {
       TryAgain:
-      cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода выберите 0" << endl;
+      cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0" << endl;
       int P;
       cin >> P;
       if (P==1) 
@@ -96,7 +96,7 @@ int main() {
         {
           cout << "введите путь сохранения файла(пока нет реализации) :";
           calendar Year;
-          Year.Insert29Days(2);
+          Year.MakeYearCalendar();
           cout << "Календарь создан! Приятного пользования" << endl;
           goto TryAgain;
         }

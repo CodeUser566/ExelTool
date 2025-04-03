@@ -1,25 +1,12 @@
 #include <../includes/Lib/Lib.hpp>
 
 calendar::calendar()
-{
-    months[1] = workbook_add_worksheet(YearCalendar,"январь");
-    months[2] = workbook_add_worksheet(YearCalendar,"февраль");
-    months[3] = workbook_add_worksheet(YearCalendar,"март");
-    months[4] = workbook_add_worksheet(YearCalendar,"апрель");
-    months[5] = workbook_add_worksheet(YearCalendar,"май");
-    months[6] = workbook_add_worksheet(YearCalendar,"июнь");
-    months[7] = workbook_add_worksheet(YearCalendar,"июль");
-    months[8] = workbook_add_worksheet(YearCalendar,"август");
-    months[9] = workbook_add_worksheet(YearCalendar,"сентябрь");
-    months[10] = workbook_add_worksheet(YearCalendar,"октябрь");
-    months[11] = workbook_add_worksheet(YearCalendar,"ноябрь");
-    months[12] = workbook_add_worksheet(YearCalendar,"декабрь");
-};
+{}
+
 calendar::~calendar()
 {
-    workbook_close(YearCalendar);
+    workbook_close(Calendar);
 }
-
 void calendar::Insert29Days(int month)
 {
     int row = 0;
@@ -83,4 +70,35 @@ void calendar::Insert31Days(int month)
         }
         col++;
       }
+}
+void calendar::MakeYearCalendar()
+{
+  months[1] = workbook_add_worksheet(Calendar,"январь");
+  Insert31Days(1);
+  months[2] = workbook_add_worksheet(Calendar,"февраль");
+  Insert29Days(2);
+  months[3] = workbook_add_worksheet(Calendar,"март");
+  Insert31Days(3);
+  months[4] = workbook_add_worksheet(Calendar,"апрель");
+  Insert30Days(4);
+  months[5] = workbook_add_worksheet(Calendar,"май");
+  Insert31Days(5);
+  months[6] = workbook_add_worksheet(Calendar,"июнь");
+  Insert30Days(6);
+  months[7] = workbook_add_worksheet(Calendar,"июль");
+  Insert31Days(7);
+  months[8] = workbook_add_worksheet(Calendar,"август");
+  Insert31Days(8);
+  months[9] = workbook_add_worksheet(Calendar,"сентябрь");
+  Insert30Days(9);
+  months[10] = workbook_add_worksheet(Calendar,"октябрь");
+  Insert31Days(10);
+  months[11] = workbook_add_worksheet(Calendar,"ноябрь");
+  Insert30Days(11);
+  months[12] = workbook_add_worksheet(Calendar,"декабрь");
+  Insert31Days(12);
+}
+void calendar::MakeMonthCalendar(int month)
+{
+  
 }
