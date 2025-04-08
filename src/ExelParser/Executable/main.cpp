@@ -28,9 +28,9 @@ int main() {
   fstream CSV_Read;
   CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
   cout << "Введите путь до файла:" << endl;
-  getline(cin,Path);
+  cin >> Path;
   cout << "введите путь сохранения файла:" << endl; //сделать отдельно как путь для сохранения таблиц.
-  getline(cin,SavePath);
+  cin >> SavePath;
   try
   {
     CSV_Read.open(Path,fstream::in | fstream::out);
