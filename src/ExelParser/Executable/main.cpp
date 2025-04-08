@@ -41,6 +41,8 @@ int main() {
     cout << ex.what() << endl;
     cout << ex.code() << endl;
   }
+
+  
 //имя файла и путь к файлу
   int lastsym;
   lastsym = Path.rfind('/');
