@@ -10,6 +10,7 @@
 #include <../includes/Lib/Lib.hpp>
 
 using namespace std;
+string SetFileName(std::string path);
 
 int main() {
   setlocale(LC_ALL, "ru");
@@ -29,6 +30,7 @@ int main() {
   CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
   cout << "Введите путь до файла:" << endl;
   cin >> Path;
+  string Filename = SetFileName(Path);
   cout << "введите путь сохранения файла:" << endl; //сделать отдельно как путь для сохранения таблиц.
   cin >> SavePath;
   try
@@ -44,12 +46,13 @@ int main() {
 
   
 //имя файла и путь к файлу
-  int lastsym;
-  lastsym = Path.rfind('/');
-  string Filename = Path.substr(lastsym + 1);
-  Filename.erase(lastsym = Filename.rfind('.'));
+
+
+//
   SavePath = SavePath + Filename + ".xlsx";
   const char* workbookName = SavePath.c_str();
+//
+
   //создание таблицы и переменных для цикла
   lxw_workbook *workbook = workbook_new(workbookName);
   lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
@@ -128,4 +131,13 @@ int main() {
 }
 cout << "End Programm, Bye!" << endl;
   return 0;
+}
+
+string SetFileName(std::string path)
+{
+  int lastsym;
+  lastsym = path.rfind('/');
+  string Filename = path.substr(lastsym + 1);
+  Filename.erase(lastsym = Filename.rfind('.'));
+  return Filename;
 }
