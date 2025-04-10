@@ -7,19 +7,6 @@
 
 class calendar
 {
-    private:
-    lxw_workbook *Calendar = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/YearCalendar.xlsx");
-    std::map<int, lxw_worksheet*> months;
-
-    void Insert29Days(int month);
-    void Insert28Days(int month);
-    void Insert30Days(int month);
-    void Insert31Days(int month);
-    
-    public:
-    calendar();
-    ~calendar();
-
     void MakeMonthCalendar();
     void MakeYearCalendar();
     void MakeLeapYearCalendar();
@@ -33,15 +20,23 @@ class Workbook
     private:
     lxw_workbook *workbook;
     std::fstream ConvertFile;
+    std::map<int, lxw_worksheet*> months;
 
-    
     public:
-
-    void CreateCalendarWorkbook();
-    void CreateConvertWorkbook();
-    void CSV_Convert();
-
     Workbook();
     ~Workbook();
+
+    void CreateConvertXlsxFile();
+    void CreateXlsxFile();
+
+
+    void Convert_CSV();
+    void CreateCalendar();
+    void MakeYearCalendar();
+    void MakeLeapYearCalendar();
+    void Insert28Days(int month);
+    void Insert29Days(int month);
+    void Insert30Days(int month);
+    void Insert31Days(int month);
 };
 #endif
