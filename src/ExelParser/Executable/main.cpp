@@ -1,10 +1,7 @@
 #include <clocale>
-#include <cstddef>
 #include <cstdio>
-#include <fstream>
 #include <iostream>
 #include <ostream>
-#include <string>
 #include <xlsxwriter/workbook.h>
 #include <xlsxwriter/worksheet.h>
 #include <../includes/Lib/Lib.hpp>
@@ -31,8 +28,7 @@ int main() {
       cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0" << endl;
       int P;
       cin >> P;
-      if (P==1) 
-      {
+      if (P==1) {
         cout << "на какой год нужен календарь? : ";
         int Year;
         cin >> Year;
@@ -53,16 +49,13 @@ int main() {
           goto TryAgain;
         }
       }
-      else if (P==2) 
-      {
+      else if (P==2) {
         
       }
-      else if (P == 0) 
-      {
+      else if (P == 0) {
         goto ProgrammStart;
       }
-      else 
-      {
+      else {
         cout << "выберите 1 или 2" << endl;
         goto TryAgain;
       }

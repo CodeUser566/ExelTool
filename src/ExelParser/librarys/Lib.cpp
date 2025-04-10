@@ -4,15 +4,14 @@
 #include <string>
 #include <xlsxwriter/workbook.h>
 
-calendar::calendar()
-{}
+calendar::calendar(){
+  
+}
 
-calendar::~calendar()
-{
+calendar::~calendar(){
     workbook_close(Calendar);
 }
-void calendar::Insert29Days(int month)
-{
+void calendar::Insert29Days(int month){
     int row = 0;
     int col = 0;
     for (int i = 1;i < 30;i++) 
@@ -27,8 +26,7 @@ void calendar::Insert29Days(int month)
         col++;
       }
 }
-void calendar::Insert28Days(int month)
-{
+void calendar::Insert28Days(int month){
     int row = 0;
     int col = 0;
     for (int i = 1;i < 29;i++) 
@@ -43,8 +41,7 @@ void calendar::Insert28Days(int month)
         col++;
       }
 }
-void calendar::Insert30Days(int month)
-{
+void calendar::Insert30Days(int month){
     int row = 0;
     int col = 0;
     for (int i = 1;i < 31;i++) 
@@ -59,8 +56,7 @@ void calendar::Insert30Days(int month)
         col++;
       }
 }
-void calendar::Insert31Days(int month)
-{
+void calendar::Insert31Days(int month){
     int row = 0;
     int col = 0;
     for (int i = 1;i < 32;i++) 
@@ -75,8 +71,7 @@ void calendar::Insert31Days(int month)
         col++;
       }
 }
-void calendar::MakeYearCalendar()
-{
+void calendar::MakeYearCalendar(){
   months[1] = workbook_add_worksheet(Calendar,"январь");
   Insert31Days(1);
   months[2] = workbook_add_worksheet(Calendar,"февраль");
@@ -103,8 +98,7 @@ void calendar::MakeYearCalendar()
   Insert31Days(12);
 }
 
-void calendar::MakeLeapYearCalendar()
-{
+void calendar::MakeLeapYearCalendar(){
   months[1] = workbook_add_worksheet(Calendar,"январь");
   Insert31Days(1);
   months[2] = workbook_add_worksheet(Calendar,"февраль");
@@ -131,23 +125,19 @@ void calendar::MakeLeapYearCalendar()
   Insert31Days(12);
 }
 
-void calendar::MakeMonthCalendar()
-{
+void calendar::MakeMonthCalendar(){
   
 }
 
 
-Workbook::Workbook()
-{
+Workbook::Workbook(){
   workbook = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/Table.xlsx");
 }
-Workbook::~Workbook()
-{
+Workbook::~Workbook(){
   workbook_close(workbook);
 }
 
-void Workbook::CreateConvertWorkbook()
-{
+void Workbook::CreateConvertWorkbook(){
   ConvertFile.exceptions(std::ifstream::badbit|std::ifstream::failbit);
   int lastsym;
   std::string FilePath;
@@ -178,14 +168,13 @@ void Workbook::CreateConvertWorkbook()
   std::cout << "Файл Exel создан\n";
 }
  //создание Листа и переменных для цикла
- void Workbook::CSV_Convert()
- {
+ void Workbook::CSV_Convert(){
  int row = 0;
  int collum = 0;
  std::string acc;
  std::string Line;
  lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
- 
+
 //считывание файла
  while (!ConvertFile.eof()) 
  {
