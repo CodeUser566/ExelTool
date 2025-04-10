@@ -1,3 +1,4 @@
+#include <fstream>
 #include <map>
 #include <xlsxwriter.h>
 #include <xlsxwriter/workbook.h>
@@ -22,5 +23,25 @@ class calendar
     void MakeMonthCalendar();
     void MakeYearCalendar();
     void MakeLeapYearCalendar();
+};
+#endif
+
+#ifndef WORKBOOK
+#define WORKBOOK
+class Workbook
+{
+    private:
+    lxw_workbook *workbook;
+    std::fstream ConvertFile;
+
+    
+    public:
+
+    void CreateCalendarWorkbook();
+    void CreateConvertWorkbook();
+    void CSV_Convert();
+
+    Workbook();
+    ~Workbook();
 };
 #endif

@@ -1,4 +1,8 @@
 #include <../includes/Lib/Lib.hpp>
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <xlsxwriter/workbook.h>
 
 calendar::calendar()
 {}
@@ -130,4 +134,82 @@ void calendar::MakeLeapYearCalendar()
 void calendar::MakeMonthCalendar()
 {
   
+}
+
+
+Workbook::Workbook()
+{
+  workbook = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/Table.xlsx");
+}
+Workbook::~Workbook()
+{
+  workbook_close(workbook);
+}
+
+void Workbook::CreateConvertWorkbook()
+{
+  ConvertFile.exceptions(std::ifstream::badbit|std::ifstream::failbit);
+  int lastsym;
+  std::string FilePath;
+  std::string FileSavePath;
+  const char* Workbookname;
+  
+  std::cout << "Введите путь до файла :\n";
+  std::cin >> FilePath;
+  try
+  {
+    ConvertFile.open(FilePath,std::fstream::in | std::fstream::out);
+  } 
+  catch (const std::ifstream::failure & ex) 
+  {
+    std::cout << "Ошибка открытия файла, Проверьте правильность написания файла.Также убедитесь что формат файла .CSV\n";
+    std::cout << ex.what() << std::endl;
+    std::cout << ex.code() << std::endl;
+  }
+
+  lastsym = FilePath.rfind('/');
+  FilePath = FilePath.substr(lastsym + 1);
+  FilePath.erase(lastsym = FilePath.rfind('.'));
+  std::cout << "Введите путь сохранения файла : \n";
+  std::cin >> FileSavePath;
+  FileSavePath = FileSavePath + FilePath + ".xlsx";
+  Workbookname = FileSavePath.c_str();
+  workbook = workbook_new(Workbookname);
+  std::cout << "Файл Exel создан\n";
+}
+ //создание Листа и переменных для цикла
+ void Workbook::CSV_Convert()
+ {
+ int row = 0;
+ int collum = 0;
+ std::string acc;
+ std::string Line;
+ lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
+ 
+//считывание файла
+ while (!ConvertFile.eof()) 
+ {
+   getline(ConvertFile,Line);
+   for (int i = 0; i < Line.size(); i++) 
+ {
+ char CurrentSymbol = Line[i];
+ if (CurrentSymbol == ';')
+ {
+   worksheet_write_string(worksheet, row, collum, acc.c_str(), nullptr);
+   acc.clear();
+   collum++;
+   continue;
+ }
+ acc += CurrentSymbol;
+ }
+ if (!acc.empty()) 
+ {
+  worksheet_write_string(worksheet, row, collum, acc.c_str(), NULL);
+  collum = 0;
+  acc.clear();
+  row++;
+ }
+ }
+ ConvertFile.close();
+ std::cout << "Файл конвертирован!\n";
 }

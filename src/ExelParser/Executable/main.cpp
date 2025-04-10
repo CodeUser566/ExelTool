@@ -10,7 +10,6 @@
 #include <../includes/Lib/Lib.hpp>
 
 using namespace std;
-string SetFileName(std::string path);
 
 int main() {
   setlocale(LC_ALL, "ru");
@@ -22,70 +21,10 @@ int main() {
   cin >> n;
   while (n != 0) {
     if (n == 1) {
-  //обернуть в функцию, возможно создать класс
-  string Path;
-  string Line;
-  string SavePath;
-  fstream CSV_Read;
-  CSV_Read.exceptions(ifstream::badbit|ifstream::failbit); 
-  cout << "Введите путь до файла:" << endl;
-  cin >> Path;
-  string Filename = SetFileName(Path);
-  cout << "введите путь сохранения файла:" << endl; //сделать отдельно как путь для сохранения таблиц.
-  cin >> SavePath;
-  try
-  {
-    CSV_Read.open(Path,fstream::in | fstream::out);
-  } 
-  catch (const ifstream::failure & ex) 
-  {
-    cout << "Ошибка открытия файла, Проверьте правильность написания файла.Также убедитесь что формат файла .CSV" << endl;
-    cout << ex.what() << endl;
-    cout << ex.code() << endl;
-  }
-
-  
-//имя файла и путь к файлу
-
-
-//
-  SavePath = SavePath + Filename + ".xlsx";
-  const char* workbookName = SavePath.c_str();
-//
-
-  //создание таблицы и переменных для цикла
-  lxw_workbook *workbook = workbook_new(workbookName);
-  lxw_worksheet *worksheet = workbook_add_worksheet(workbook,nullptr);
-  int row = 0;
-  int collum = 0;
-  string acc;
-//считывание файла
-  while (!CSV_Read.eof()) 
-  {
-    getline(CSV_Read,Line);
-    for (int i = 0; i < Line.size(); i++) 
-  {
-  char CurrentSymbol = Line[i];
-  if (CurrentSymbol == ';')
-  {
-    worksheet_write_string(worksheet, row, collum, acc.c_str(), nullptr);
-    acc.clear();
-    collum++;
-    continue;
-  }
-  acc += CurrentSymbol;
-  }
-  if (!acc.empty()) 
-  {
-   worksheet_write_string(worksheet, row, collum, acc.c_str(), NULL);
-   collum = 0;
-   acc.clear();
-   row++;
-  }
-  }
-  return workbook_close(workbook);
-  CSV_Read.close();
-  cout << "Bye!" << endl;
+      Workbook CSV;
+      CSV.CreateConvertWorkbook();
+      CSV.CSV_Convert();
+      goto ProgrammStart;
 }
     if (n == 2) {
       TryAgain:
@@ -131,13 +70,4 @@ int main() {
 }
 cout << "End Programm, Bye!" << endl;
   return 0;
-}
-
-string SetFileName(std::string path)
-{
-  int lastsym;
-  lastsym = path.rfind('/');
-  string Filename = path.substr(lastsym + 1);
-  Filename.erase(lastsym = Filename.rfind('.'));
-  return Filename;
 }
