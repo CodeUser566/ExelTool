@@ -6,17 +6,14 @@
 
 
 
-
-
-void calendar::MakeMonthCalendar(){
-  
-}
 Workbook::Workbook(){
   workbook = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/Table.xlsx");
 }
 Workbook::~Workbook(){
   workbook_close(workbook);
 }
+
+
 
 void Workbook::CreateXlsxFile(){
   std::string FileSavePath;
@@ -42,14 +39,12 @@ void Workbook::CreateCalendar(){
     std::cin >> Year;
     if (Year % 4 == 0)
     {
-      Workbook Calendar;
-      Calendar.MakeYearCalendar();
+      MakeYearCalendar();
       std::cout << "Календарь создан! Приятного использования!\n";
     }
     else 
     {
-      Workbook Calendar;
-      Calendar.MakeLeapYearCalendar();
+      MakeLeapYearCalendar();
       std::cout << "Календарь создан! Приятного использования!\n";
     }
   }
@@ -178,8 +173,9 @@ void::Workbook::MakeLeapYearCalendar(){
   months[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
 }
-
-
+void calendar::MakeMonthCalendar(){
+  
+}
 void Workbook::CreateConvertXlsxFile(){
   ConvertFile.exceptions(std::ifstream::badbit|std::ifstream::failbit);
   int lastsym;
@@ -209,7 +205,6 @@ void Workbook::CreateConvertXlsxFile(){
   workbook = workbook_new(Workbookname);
   std::cout << "Файл Exel создан\n";
 }
- //создание Листа и переменных для цикла
  void Workbook::Convert_CSV(){
  int row = 0;
  int collum = 0;
