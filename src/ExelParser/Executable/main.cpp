@@ -1,9 +1,4 @@
-#include <clocale>
-#include <cstdio>
 #include <iostream>
-#include <ostream>
-#include <xlsxwriter/workbook.h>
-#include <xlsxwriter/worksheet.h>
 #include <../includes/Lib/Lib.hpp>
 
 using namespace std;
@@ -27,6 +22,12 @@ int main() {
       Workbook Calendar;
       Calendar.CreateXlsxFile();
       Calendar.CreateCalendar();
+      goto ProgrammStart;
+      }
+    if (n == 3) {
+      Workbook expenses;
+      expenses.CreateXlsxFile();
+
       goto ProgrammStart;
       }
     }
