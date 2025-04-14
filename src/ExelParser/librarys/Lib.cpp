@@ -12,9 +12,6 @@ Workbook::Workbook(){
 Workbook::~Workbook(){
   workbook_close(workbook);
 }
-
-
-
 void Workbook::CreateXlsxFile(){
   std::string FileSavePath;
   std::string FileName;
@@ -27,7 +24,6 @@ void Workbook::CreateXlsxFile(){
   const char * Workbookname = FileSavePath.c_str();
   workbook = workbook_new(Workbookname);
 }
-
 void Workbook::CreateCalendar(){
   TryAgain:
   std::cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0\n";
@@ -49,8 +45,16 @@ void Workbook::CreateCalendar(){
     }
   }
   else if (P==2) {
-    
-    goto TryAgain;
+    int Y;
+    int M;
+    std::cout << "Какой год? Укажите цифрой:\n";
+    //Добавить проверку на ввод года
+    std::cin >> Y;
+    std::cout << "на какой месяц нужен календарь? Укажите цифрой от 1 до 12:\n";
+    //Добавить проверку на ввод месяца
+    std::cin >> M;
+    MakeMonthCalendar(Y,M);
+    std::cout << "Календарь на месяц создан! Приятного использования!\n";
   }
   else if (P == 0) {
     return;
@@ -91,6 +95,7 @@ void Workbook::Insert28Days(int month){
       col++;
     }
 }
+
 void Workbook::Insert30Days(int month){
   int row = 0;
   int col = 0;
@@ -106,6 +111,7 @@ void Workbook::Insert30Days(int month){
       col++;
     }
 }
+
 void Workbook::Insert31Days(int month){
   int row = 0;
   int col = 0;
@@ -121,6 +127,7 @@ void Workbook::Insert31Days(int month){
       col++;
     }
 }
+
 void::Workbook::MakeYearCalendar(){
   months[1] = workbook_add_worksheet(workbook,"январь");
   Insert31Days(1);
@@ -147,6 +154,114 @@ void::Workbook::MakeYearCalendar(){
   months[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
 }
+
+void::Workbook::MakeMonthCalendar(int Year,int month){
+  if (Year % 4 == 0) {
+  switch (month) {
+    case 1:
+    months[1] = workbook_add_worksheet(workbook, "январь");
+    Insert31Days(1);
+    break;
+    case 2:
+    months[1] = workbook_add_worksheet(workbook, "февраль");
+    Insert29Days(1);
+    break;
+    case 3:
+    months[1] = workbook_add_worksheet(workbook, "март");
+    Insert31Days(1);
+    break;
+    case 4:
+    workbook_add_worksheet(workbook, "апрель");
+    Insert30Days(1);
+    break;
+    case 5:
+    months[1] = workbook_add_worksheet(workbook, "май");
+    Insert31Days(1);
+    break;
+    case 6:
+    months[1] = workbook_add_worksheet(workbook, "июнь");
+    Insert30Days(1);
+    break;
+    case 7:
+    months[1] = workbook_add_worksheet(workbook, "июль");
+    Insert31Days(1);
+    break;
+    case 8:
+    months[1] = workbook_add_worksheet(workbook, "август");
+    Insert31Days(1);
+    break;
+    case 9:
+    months[1] = workbook_add_worksheet(workbook, "сентябрь");
+    Insert30Days(1);
+    break;
+    case 10:
+    months[1] = workbook_add_worksheet(workbook, "октябрь");
+    Insert31Days(1);
+    break;
+    case 11:
+    months[1] = workbook_add_worksheet(workbook, "ноябрь");
+    Insert30Days(1);
+    break;
+    case 12:
+    months[1] = workbook_add_worksheet(workbook, "декабрь");
+    Insert31Days(1);
+    break;
+  }
+  }
+  else {
+    switch (month) {
+      case 1:
+      months[1] = workbook_add_worksheet(workbook, "январь");
+      Insert31Days(1);
+      break;
+      case 2:
+      months[1] = workbook_add_worksheet(workbook, "февраль");
+      Insert28Days(1);
+      break;
+      case 3:
+      months[1] = workbook_add_worksheet(workbook, "март");
+      Insert31Days(1);
+      break;
+      case 4:
+      months[1] = workbook_add_worksheet(workbook, "апрель");
+      Insert30Days(1);
+      break;
+      case 5:
+      months[1] = workbook_add_worksheet(workbook, "май");
+      Insert31Days(1);
+      break;
+      case 6:
+      months[1] = workbook_add_worksheet(workbook, "июнь");
+      Insert30Days(1);
+      break;
+      case 7:
+      months[1] = workbook_add_worksheet(workbook, "июль");
+      Insert31Days(1);
+      break;
+      case 8:
+      months[1] = workbook_add_worksheet(workbook, "август");
+      Insert31Days(1);
+      break;
+      case 9:
+      months[1] = workbook_add_worksheet(workbook, "сентябрь");
+      Insert30Days(1);
+      break;
+      case 10:
+      months[1] = workbook_add_worksheet(workbook, "октябрь");
+      Insert31Days(1);
+      break;
+      case 11:
+      months[1] = workbook_add_worksheet(workbook, "ноябрь");
+      Insert30Days(1);
+      break;
+      case 12:
+      months[1] = workbook_add_worksheet(workbook, "декабрь");
+      Insert31Days(1);
+      break;
+  }
+}
+}
+
 void::Workbook::MakeLeapYearCalendar(){
   months[1] = workbook_add_worksheet(workbook,"январь");
   Insert31Days(1);
@@ -173,9 +288,7 @@ void::Workbook::MakeLeapYearCalendar(){
   months[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
 }
-void calendar::MakeMonthCalendar(){
-  
-}
+
 void Workbook::CreateConvertXlsxFile(){
   ConvertFile.exceptions(std::ifstream::badbit|std::ifstream::failbit);
   int lastsym;
@@ -205,6 +318,7 @@ void Workbook::CreateConvertXlsxFile(){
   workbook = workbook_new(Workbookname);
   std::cout << "Файл Exel создан\n";
 }
+
  void Workbook::Convert_CSV(){
  int row = 0;
  int collum = 0;

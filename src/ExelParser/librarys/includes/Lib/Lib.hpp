@@ -2,16 +2,6 @@
 #include <map>
 #include <xlsxwriter.h>
 #include <xlsxwriter/workbook.h>
-#ifndef CALENDAR
-#define CALENDAR
-
-class calendar
-{
-    void MakeMonthCalendar();
-    void MakeYearCalendar();
-    void MakeLeapYearCalendar();
-};
-#endif
 
 #ifndef WORKBOOK
 #define WORKBOOK
@@ -34,6 +24,7 @@ class Workbook
     void CreateCalendar();
     void MakeYearCalendar();
     void MakeLeapYearCalendar();
+    void MakeMonthCalendar(int Year,int month);
     void Insert28Days(int month);
     void Insert29Days(int month);
     void Insert30Days(int month);
