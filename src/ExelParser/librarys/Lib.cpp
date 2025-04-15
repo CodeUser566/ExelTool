@@ -1,17 +1,21 @@
 #include <../includes/Lib/Lib.hpp>
+#include <cstddef>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <xlsxwriter/workbook.h>
+#include <xlsxwriter/worksheet.h>
 
 
 
 Workbook::Workbook(){
   workbook = workbook_new("/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/Exel/Table.xlsx");
 }
+
 Workbook::~Workbook(){
   workbook_close(workbook);
 }
+
 void Workbook::CreateXlsxFile(){
   std::string FileSavePath;
   std::string FileName;
@@ -24,6 +28,7 @@ void Workbook::CreateXlsxFile(){
   const char * Workbookname = FileSavePath.c_str();
   workbook = workbook_new(Workbookname);
 }
+
 void Workbook::CreateCalendar(){
   TryAgain:
   std::cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0\n";
@@ -70,7 +75,7 @@ void Workbook::Insert29Days(int month){
   int col = 0;
   for (int i = 1;i < 30;i++) 
     {
-      worksheet_write_number(months[month], row, col, i, nullptr);
+      worksheet_write_number(WorksheetPointer[month], row, col, i, nullptr);
       if (i %4 == 0)
       {
         row++;
@@ -80,12 +85,13 @@ void Workbook::Insert29Days(int month){
       col++;
     }
 }
+
 void Workbook::Insert28Days(int month){
   int row = 0;
   int col = 0;
   for (int i = 1;i < 29;i++) 
     {
-      worksheet_write_number(months[month], row, col, i, nullptr);
+      worksheet_write_number(WorksheetPointer[month], row, col, i, nullptr);
       if (i %4 == 0)
       {
         row++;
@@ -101,7 +107,7 @@ void Workbook::Insert30Days(int month){
   int col = 0;
   for (int i = 1;i < 31;i++) 
     {
-      worksheet_write_number(months[month], row, col, i, nullptr);
+      worksheet_write_number(WorksheetPointer[month], row, col, i, nullptr);
       if (i %4 == 0)
       {
         row++;
@@ -117,7 +123,7 @@ void Workbook::Insert31Days(int month){
   int col = 0;
   for (int i = 1;i < 32;i++) 
     {
-      worksheet_write_number(months[month], row, col, i, nullptr);
+      worksheet_write_number(WorksheetPointer[month], row, col, i, nullptr);
       if (i %4 == 0)
       {
         row++;
@@ -129,29 +135,29 @@ void Workbook::Insert31Days(int month){
 }
 
 void::Workbook::MakeYearCalendar(){
-  months[1] = workbook_add_worksheet(workbook,"январь");
+  WorksheetPointer[1] = workbook_add_worksheet(workbook,"январь");
   Insert31Days(1);
-  months[2] = workbook_add_worksheet(workbook,"февраль");
+  WorksheetPointer[2] = workbook_add_worksheet(workbook,"февраль");
   Insert29Days(2);
-  months[3] = workbook_add_worksheet(workbook,"март");
+  WorksheetPointer[3] = workbook_add_worksheet(workbook,"март");
   Insert31Days(3);
-  months[4] = workbook_add_worksheet(workbook,"апрель");
+  WorksheetPointer[4] = workbook_add_worksheet(workbook,"апрель");
   Insert30Days(4);
-  months[5] = workbook_add_worksheet(workbook,"май");
+  WorksheetPointer[5] = workbook_add_worksheet(workbook,"май");
   Insert31Days(5);
-  months[6] = workbook_add_worksheet(workbook,"июнь");
+  WorksheetPointer[6] = workbook_add_worksheet(workbook,"июнь");
   Insert30Days(6);
-  months[7] = workbook_add_worksheet(workbook,"июль");
+  WorksheetPointer[7] = workbook_add_worksheet(workbook,"июль");
   Insert31Days(7);
-  months[8] = workbook_add_worksheet(workbook,"август");
+  WorksheetPointer[8] = workbook_add_worksheet(workbook,"август");
   Insert31Days(8);
-  months[9] = workbook_add_worksheet(workbook,"сентябрь");
+  WorksheetPointer[9] = workbook_add_worksheet(workbook,"сентябрь");
   Insert30Days(9);
-  months[10] = workbook_add_worksheet(workbook,"октябрь");
+  WorksheetPointer[10] = workbook_add_worksheet(workbook,"октябрь");
   Insert31Days(10);
-  months[11] = workbook_add_worksheet(workbook,"ноябрь");
+  WorksheetPointer[11] = workbook_add_worksheet(workbook,"ноябрь");
   Insert30Days(11);
-  months[12] = workbook_add_worksheet(workbook,"декабрь");
+  WorksheetPointer[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
 }
 
@@ -159,15 +165,15 @@ void::Workbook::MakeMonthCalendar(int Year,int month){
   if (Year % 4 == 0) {
   switch (month) {
     case 1:
-    months[1] = workbook_add_worksheet(workbook, "январь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "январь");
     Insert31Days(1);
     break;
     case 2:
-    months[1] = workbook_add_worksheet(workbook, "февраль");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "февраль");
     Insert29Days(1);
     break;
     case 3:
-    months[1] = workbook_add_worksheet(workbook, "март");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "март");
     Insert31Days(1);
     break;
     case 4:
@@ -175,35 +181,35 @@ void::Workbook::MakeMonthCalendar(int Year,int month){
     Insert30Days(1);
     break;
     case 5:
-    months[1] = workbook_add_worksheet(workbook, "май");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "май");
     Insert31Days(1);
     break;
     case 6:
-    months[1] = workbook_add_worksheet(workbook, "июнь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "июнь");
     Insert30Days(1);
     break;
     case 7:
-    months[1] = workbook_add_worksheet(workbook, "июль");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "июль");
     Insert31Days(1);
     break;
     case 8:
-    months[1] = workbook_add_worksheet(workbook, "август");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "август");
     Insert31Days(1);
     break;
     case 9:
-    months[1] = workbook_add_worksheet(workbook, "сентябрь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "сентябрь");
     Insert30Days(1);
     break;
     case 10:
-    months[1] = workbook_add_worksheet(workbook, "октябрь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "октябрь");
     Insert31Days(1);
     break;
     case 11:
-    months[1] = workbook_add_worksheet(workbook, "ноябрь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "ноябрь");
     Insert30Days(1);
     break;
     case 12:
-    months[1] = workbook_add_worksheet(workbook, "декабрь");
+    WorksheetPointer[1] = workbook_add_worksheet(workbook, "декабрь");
     Insert31Days(1);
     break;
   }
@@ -211,51 +217,51 @@ void::Workbook::MakeMonthCalendar(int Year,int month){
   else {
     switch (month) {
       case 1:
-      months[1] = workbook_add_worksheet(workbook, "январь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "январь");
       Insert31Days(1);
       break;
       case 2:
-      months[1] = workbook_add_worksheet(workbook, "февраль");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "февраль");
       Insert28Days(1);
       break;
       case 3:
-      months[1] = workbook_add_worksheet(workbook, "март");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "март");
       Insert31Days(1);
       break;
       case 4:
-      months[1] = workbook_add_worksheet(workbook, "апрель");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "апрель");
       Insert30Days(1);
       break;
       case 5:
-      months[1] = workbook_add_worksheet(workbook, "май");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "май");
       Insert31Days(1);
       break;
       case 6:
-      months[1] = workbook_add_worksheet(workbook, "июнь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "июнь");
       Insert30Days(1);
       break;
       case 7:
-      months[1] = workbook_add_worksheet(workbook, "июль");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "июль");
       Insert31Days(1);
       break;
       case 8:
-      months[1] = workbook_add_worksheet(workbook, "август");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "август");
       Insert31Days(1);
       break;
       case 9:
-      months[1] = workbook_add_worksheet(workbook, "сентябрь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "сентябрь");
       Insert30Days(1);
       break;
       case 10:
-      months[1] = workbook_add_worksheet(workbook, "октябрь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "октябрь");
       Insert31Days(1);
       break;
       case 11:
-      months[1] = workbook_add_worksheet(workbook, "ноябрь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "ноябрь");
       Insert30Days(1);
       break;
       case 12:
-      months[1] = workbook_add_worksheet(workbook, "декабрь");
+      WorksheetPointer[1] = workbook_add_worksheet(workbook, "декабрь");
       Insert31Days(1);
       break;
   }
@@ -263,29 +269,29 @@ void::Workbook::MakeMonthCalendar(int Year,int month){
 }
 
 void::Workbook::MakeLeapYearCalendar(){
-  months[1] = workbook_add_worksheet(workbook,"январь");
+  WorksheetPointer[1] = workbook_add_worksheet(workbook,"январь");
   Insert31Days(1);
-  months[2] = workbook_add_worksheet(workbook,"февраль");
+  WorksheetPointer[2] = workbook_add_worksheet(workbook,"февраль");
   Insert28Days(2);
-  months[3] = workbook_add_worksheet(workbook,"март");
+  WorksheetPointer[3] = workbook_add_worksheet(workbook,"март");
   Insert31Days(3);
-  months[4] = workbook_add_worksheet(workbook,"апрель");
+  WorksheetPointer[4] = workbook_add_worksheet(workbook,"апрель");
   Insert30Days(4);
-  months[5] = workbook_add_worksheet(workbook,"май");
+  WorksheetPointer[5] = workbook_add_worksheet(workbook,"май");
   Insert31Days(5);
-  months[6] = workbook_add_worksheet(workbook,"июнь");
+  WorksheetPointer[6] = workbook_add_worksheet(workbook,"июнь");
   Insert30Days(6);
-  months[7] = workbook_add_worksheet(workbook,"июль");
+  WorksheetPointer[7] = workbook_add_worksheet(workbook,"июль");
   Insert31Days(7);
-  months[8] = workbook_add_worksheet(workbook,"август");
+  WorksheetPointer[8] = workbook_add_worksheet(workbook,"август");
   Insert31Days(8);
-  months[9] = workbook_add_worksheet(workbook,"сентябрь");
+  WorksheetPointer[9] = workbook_add_worksheet(workbook,"сентябрь");
   Insert30Days(9);
-  months[10] = workbook_add_worksheet(workbook,"октябрь");
+  WorksheetPointer[10] = workbook_add_worksheet(workbook,"октябрь");
   Insert31Days(10);
-  months[11] = workbook_add_worksheet(workbook,"ноябрь");
+  WorksheetPointer[11] = workbook_add_worksheet(workbook,"ноябрь");
   Insert30Days(11);
-  months[12] = workbook_add_worksheet(workbook,"декабрь");
+  WorksheetPointer[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
 }
 
@@ -351,4 +357,79 @@ void Workbook::CreateConvertXlsxFile(){
  }
  ConvertFile.close();
  std::cout << "Файл конвертирован!\n";
+}
+
+void Workbook::CreateSyllabusTable(){
+  int D;
+  int row = 1;
+  int col = 1;
+  WorksheetPointer[1] = workbook_add_worksheet(workbook, NULL);
+
+  worksheet_write_string(WorksheetPointer[1], 0, 0, "День", nullptr);
+  worksheet_write_string(WorksheetPointer[1], 0, 1, "Предмет", nullptr);
+  worksheet_write_string(WorksheetPointer[1], 0, 2, "Время", nullptr);
+  worksheet_write_string(WorksheetPointer[1], 0, 3, "Аудитория", nullptr);
+  Start:
+  std::cout << "Выберите день недели, для выхода выберите 0 :\n";
+  std::cout 
+  << "1)понедельник\n" 
+  << "2)вторник\n" 
+  << "3)среда\n" 
+  << "4)Четверг\n" 
+  << "5)Пятница\n" 
+  << "6)Суббота\n" 
+  << "7)Воскресенье\n";
+  std::cin >> D;
+  if (D >= 0 and D <=7) {
+    while (D != 0) {
+      switch (D) 
+      {
+        case 1:
+        //обернуть в функцию
+        std::string LessonName;
+        std::string LessonTime;
+        std::string LessonRoom;
+        worksheet_write_string(WorksheetPointer[1], 1,0, "Понедельник",nullptr);
+        do {
+          std::cout << "Введите название предмета, для выхода напишите 0:\n";
+          std::cin >> LessonName;
+          worksheet_write_string(WorksheetPointer[1],row,col,LessonName.c_str(),nullptr); 
+          col = col++;
+          std::cout << "Введите время:\n";
+          std::cin  >> LessonTime;
+          worksheet_write_string(WorksheetPointer[1],row,col,LessonTime.c_str(),nullptr);
+          col = col++;
+          std::cout << "Введите аудиторию\n";
+          std::cin >> LessonRoom;
+          worksheet_write_string(WorksheetPointer[1],row,col,LessonRoom.c_str(),nullptr);
+          col = 0;
+          row = row++;
+        }
+        while (LessonName != "0");
+        goto Start;
+        case 2:
+    
+        goto Start;
+        case 3:
+    
+        goto Start;
+        case 4:
+    
+        goto Start;
+        case 5:
+    
+        goto Start;
+        case 6:
+    
+        goto Start;
+        case 7:
+    
+        goto Start;
+      }
+    }
+  }
+  else {
+    std::cout << "Введённое значение находится вне диапазона или не соответствует формату числа. Введите значение заного\n";
+    goto Start;
+  }
 }

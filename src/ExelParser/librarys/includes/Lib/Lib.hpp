@@ -10,7 +10,15 @@ class Workbook
     private:
     lxw_workbook *workbook;
     std::fstream ConvertFile;
-    std::map<int, lxw_worksheet*> months;
+    std::map<int, lxw_worksheet*> WorksheetPointer;
+
+    void Insert28Days(int month);
+    void Insert29Days(int month);
+    void Insert30Days(int month);
+    void Insert31Days(int month);
+    void MakeYearCalendar();
+    void MakeLeapYearCalendar();
+    void MakeMonthCalendar(int Year,int month);
 
     public:
     Workbook();
@@ -18,16 +26,9 @@ class Workbook
 
     void CreateConvertXlsxFile();
     void CreateXlsxFile();
-
+    void CreateSyllabusTable();
 
     void Convert_CSV();
     void CreateCalendar();
-    void MakeYearCalendar();
-    void MakeLeapYearCalendar();
-    void MakeMonthCalendar(int Year,int month);
-    void Insert28Days(int month);
-    void Insert29Days(int month);
-    void Insert30Days(int month);
-    void Insert31Days(int month);
 };
 #endif

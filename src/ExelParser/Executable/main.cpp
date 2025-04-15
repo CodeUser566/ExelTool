@@ -25,9 +25,9 @@ int main() {
       goto ProgrammStart;
       }
     if (n == 3) {
-      Workbook expenses;
-      expenses.CreateXlsxFile();
-
+      Workbook syllabus;
+      syllabus.CreateXlsxFile();
+      syllabus.CreateSyllabusTable();
       goto ProgrammStart;
       }
     }
