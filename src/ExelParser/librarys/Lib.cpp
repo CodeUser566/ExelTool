@@ -29,46 +29,6 @@ void Workbook::CreateXlsxFile(){
   workbook = workbook_new(Workbookname);
 }
 
-void Workbook::CreateCalendar(){
-  TryAgain:
-  std::cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0\n";
-  int P;
-  std::cin >> P;
-  if (P==1) {
-    std::cout << "на какой год нужен календарь? : ";
-    int Year;
-    std::cin >> Year;
-    if (Year % 4 == 0)
-    {
-      MakeYearCalendar();
-      std::cout << "Календарь создан! Приятного использования!\n";
-    }
-    else 
-    {
-      MakeLeapYearCalendar();
-      std::cout << "Календарь создан! Приятного использования!\n";
-    }
-  }
-  else if (P==2) {
-    int Y;
-    int M;
-    std::cout << "Какой год? Укажите цифрой:\n";
-    //Добавить проверку на ввод года
-    std::cin >> Y;
-    std::cout << "на какой месяц нужен календарь? Укажите цифрой от 1 до 12:\n";
-    //Добавить проверку на ввод месяца
-    std::cin >> M;
-    MakeMonthCalendar(Y,M);
-    std::cout << "Календарь на месяц создан! Приятного использования!\n";
-  }
-  else if (P == 0) {
-    return;
-  }
-  else {
-    std::cout << "выберите 1 или 2\n";
-    goto TryAgain;
-}
-}
 
 void Workbook::Insert29Days(int month){
   int row = 0;
@@ -295,6 +255,31 @@ void::Workbook::MakeLeapYearCalendar(){
   Insert31Days(12);
 }
 
+void Workbook::SyllabusDay(int &row,int &col,std::string Day)
+{
+  std::string LessonName;
+  std::string LessonTime;
+  std::string LessonRoom;
+  worksheet_write_string(WorksheetPointer[1], row,col, Day.c_str(),nullptr);
+  col = col++;
+  do {
+    std::cout << "Введите название предмета, для выхода напишите 0:\n";
+    std::cin >> LessonName;
+    worksheet_write_string(WorksheetPointer[1],row,col,LessonName.c_str(),nullptr); 
+    col = col++;
+    std::cout << "Введите время:\n";
+    std::cin  >> LessonTime;
+    worksheet_write_string(WorksheetPointer[1],row,col,LessonTime.c_str(),nullptr);
+    col = col++;
+    std::cout << "Введите аудиторию\n";
+    std::cin >> LessonRoom;
+    worksheet_write_string(WorksheetPointer[1],row,col,LessonRoom.c_str(),nullptr);
+    col = 0;
+    row = row++;
+  }
+  while (LessonName != "0");
+}
+
 void Workbook::CreateConvertXlsxFile(){
   ConvertFile.exceptions(std::ifstream::badbit|std::ifstream::failbit);
   int lastsym;
@@ -361,14 +346,17 @@ void Workbook::CreateConvertXlsxFile(){
 
 void Workbook::CreateSyllabusTable(){
   int D;
-  int row = 1;
-  int col = 1;
+  int row = 0;
+  int col = 0;
   WorksheetPointer[1] = workbook_add_worksheet(workbook, NULL);
-
-  worksheet_write_string(WorksheetPointer[1], 0, 0, "День", nullptr);
-  worksheet_write_string(WorksheetPointer[1], 0, 1, "Предмет", nullptr);
-  worksheet_write_string(WorksheetPointer[1], 0, 2, "Время", nullptr);
-  worksheet_write_string(WorksheetPointer[1], 0, 3, "Аудитория", nullptr);
+  worksheet_write_string(WorksheetPointer[1], row, col, "День", nullptr);
+  col = col++;
+  worksheet_write_string(WorksheetPointer[1], row, col, "Предмет", nullptr);
+  col = col++;
+  worksheet_write_string(WorksheetPointer[1], row, col, "Время", nullptr);
+  col = col++;
+  worksheet_write_string(WorksheetPointer[1], row, col, "Аудитория", nullptr);
+  row = row++;
   Start:
   std::cout << "Выберите день недели, для выхода выберите 0 :\n";
   std::cout 
@@ -385,45 +373,25 @@ void Workbook::CreateSyllabusTable(){
       switch (D) 
       {
         case 1:
-        //обернуть в функцию
-        std::string LessonName;
-        std::string LessonTime;
-        std::string LessonRoom;
-        worksheet_write_string(WorksheetPointer[1], 1,0, "Понедельник",nullptr);
-        do {
-          std::cout << "Введите название предмета, для выхода напишите 0:\n";
-          std::cin >> LessonName;
-          worksheet_write_string(WorksheetPointer[1],row,col,LessonName.c_str(),nullptr); 
-          col = col++;
-          std::cout << "Введите время:\n";
-          std::cin  >> LessonTime;
-          worksheet_write_string(WorksheetPointer[1],row,col,LessonTime.c_str(),nullptr);
-          col = col++;
-          std::cout << "Введите аудиторию\n";
-          std::cin >> LessonRoom;
-          worksheet_write_string(WorksheetPointer[1],row,col,LessonRoom.c_str(),nullptr);
-          col = 0;
-          row = row++;
-        }
-        while (LessonName != "0");
+        SyllabusDay(row,col,"Понедельник");
         goto Start;
         case 2:
-    
+        SyllabusDay(row,col,"Вторник");
         goto Start;
         case 3:
-    
+        SyllabusDay(row,col,"Среда");
         goto Start;
         case 4:
-    
+        SyllabusDay(row,col,"Четверг");
         goto Start;
         case 5:
-    
+        SyllabusDay(row,col,"Пятница");
         goto Start;
         case 6:
-    
+        SyllabusDay(row,col,"Суббота");
         goto Start;
         case 7:
-    
+        SyllabusDay(row,col,"Воскресенье");
         goto Start;
       }
     }
@@ -433,3 +401,45 @@ void Workbook::CreateSyllabusTable(){
     goto Start;
   }
 }
+
+void Workbook::CreateCalendar(){
+  TryAgain:
+  std::cout << "вам нужен календарь на год (1) или на месяц (2) ? :  для выхода напишите 0\n";
+  int P;
+  std::cin >> P;
+  if (P==1) {
+    std::cout << "на какой год нужен календарь? : ";
+    int Year;
+    std::cin >> Year;
+    if (Year % 4 == 0)
+    {
+      MakeYearCalendar();
+      std::cout << "Календарь создан! Приятного использования!\n";
+    }
+    else 
+    {
+      MakeLeapYearCalendar();
+      std::cout << "Календарь создан! Приятного использования!\n";
+    }
+  }
+  else if (P==2) {
+    int Y;
+    int M;
+    std::cout << "Какой год? Укажите цифрой:\n";
+    //Добавить проверку на ввод года
+    std::cin >> Y;
+    std::cout << "на какой месяц нужен календарь? Укажите цифрой от 1 до 12:\n";
+    //Добавить проверку на ввод месяца
+    std::cin >> M;
+    MakeMonthCalendar(Y,M);
+    std::cout << "Календарь на месяц создан! Приятного использования!\n";
+  }
+  else if (P == 0) {
+    return;
+  }
+  else {
+    std::cout << "выберите 1 или 2\n";
+    goto TryAgain;
+}
+}
+

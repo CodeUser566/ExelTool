@@ -19,6 +19,7 @@ class Workbook
     void MakeYearCalendar();
     void MakeLeapYearCalendar();
     void MakeMonthCalendar(int Year,int month);
+    void SyllabusDay(int &row,int &col,std::string Day);
 
     public:
     Workbook();
