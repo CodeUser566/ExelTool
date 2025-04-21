@@ -255,8 +255,9 @@ void::Workbook::MakeLeapYearCalendar(){
   Insert31Days(12);
 }
 
-void Workbook::SyllabusDay(int &row,int &col,std::string Day)
-{
+//Public функции
+
+void Workbook::SyllabusDay(int &row,int &col,std::string Day){
   std::string LessonName;
   std::string LessonTime;
   std::string LessonRoom;
@@ -449,3 +450,6 @@ void Workbook::CreateCalendar(){
 }
 }
 
+void Workbook::CreateChessTable(){
+  
+}

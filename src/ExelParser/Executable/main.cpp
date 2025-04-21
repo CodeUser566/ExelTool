@@ -6,10 +6,11 @@ using namespace std;
 int main() {
   setlocale(LC_ALL, "ru");
   ProgrammStart:
-  cout << "введите цифру для выбора функционала или напишите 0 для выхода из программы :" << endl;
-  cout << "1)преобразовать CSV в Exel" << endl;
-  cout << "2)Создать календарь" << endl;
-  cout << "3)Создать Расписание" << endl;
+  cout << "введите цифру для выбора функционала или напишите 0 для выхода из программы :\n";
+  cout << "1)преобразовать CSV в Exel\n";
+  cout << "2)Создать календарь\n";
+  cout << "3)Создать Расписание\n";
+  cout << "4) Создать шахматную доску\n";
   int n;
   cin >> n;
   while (n != 0) {
@@ -31,6 +32,11 @@ int main() {
       syllabus.CreateSyllabusTable();
       goto ProgrammStart;
       }
+    if (n == 4) {
+    Workbook ChessTable;
+    ChessTable.CreateXlsxFile();
+    ChessTable.CreateChessTable();
+    }
     }
     cout << "End Programm, Bye!" << endl;
     return 0;

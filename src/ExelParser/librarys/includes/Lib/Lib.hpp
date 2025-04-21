@@ -28,7 +28,7 @@ class Workbook
     void CreateConvertXlsxFile();
     void CreateXlsxFile();
     void CreateSyllabusTable();
-
+    void CreateChessTable();
     void Convert_CSV();
     void CreateCalendar();
 };
