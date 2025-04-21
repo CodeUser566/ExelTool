@@ -1,1 +1,1 @@
-This a future simple tool for Exel tables on libxlsxwriter library
+This a future simple Pet Project for Exel tables on libxlsxwriter library
