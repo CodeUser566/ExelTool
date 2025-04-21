@@ -260,24 +260,30 @@ void Workbook::SyllabusDay(int &row,int &col,std::string Day)
   std::string LessonName;
   std::string LessonTime;
   std::string LessonRoom;
-  worksheet_write_string(WorksheetPointer[1], row,col, Day.c_str(),nullptr);
-  col = col++;
-  do {
-    std::cout << "Введите название предмета, для выхода напишите 0:\n";
-    std::cin >> LessonName;
+  Start:
+  std::cout << "Введите название предмета, для выхода напишите 0:\n";
+  std::cin >> LessonName;
+  if (LessonName != "0") 
+  {
+    worksheet_write_string(WorksheetPointer[1], row,col, Day.c_str(),nullptr);
+    col++;
     worksheet_write_string(WorksheetPointer[1],row,col,LessonName.c_str(),nullptr); 
-    col = col++;
+    col++;
     std::cout << "Введите время:\n";
     std::cin  >> LessonTime;
     worksheet_write_string(WorksheetPointer[1],row,col,LessonTime.c_str(),nullptr);
-    col = col++;
+    col++;
     std::cout << "Введите аудиторию\n";
     std::cin >> LessonRoom;
     worksheet_write_string(WorksheetPointer[1],row,col,LessonRoom.c_str(),nullptr);
     col = 0;
-    row = row++;
+    row++;
+    goto Start;
   }
-  while (LessonName != "0");
+  else 
+  {
+    std::cout << "Ввод окончен!\n";
+  }
 }
 
 void Workbook::CreateConvertXlsxFile(){
