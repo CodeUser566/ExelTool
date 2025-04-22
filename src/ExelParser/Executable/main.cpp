@@ -34,8 +34,8 @@ int main() {
       }
     if (n == 4) {
     Workbook QRTable;
-    QRTable.CreateXlsxFile();
-    QRTable.CreateQRTable();
+    
+    goto ProgrammStart;
     }
     }
     cout << "End Programm, Bye!" << endl;

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.25)
 project(ExelParser LANGUAGES CXX)
 
 find_package(libxlsxwriter REQUIRED)
+find_package(libqrencode REQUIRED)
 
 
 #глобальные настройки с++ стандарта :

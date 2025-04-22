@@ -7,4 +7,6 @@ PRIVATE
 target_link_libraries(executable
 PRIVATE
 Cmake_example::lib
-libxlsxwriter::libxlsxwriter)
+libxlsxwriter::libxlsxwriter
+libqrencode::libqrencode
+)
