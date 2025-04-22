@@ -2,6 +2,8 @@
 #include <cstddef>
 #include <fstream>
 #include <iostream>
+#include <pngconf.h>
+#include <qrencode.h>
 #include <string>
 #include <xlsxwriter/workbook.h>
 #include <xlsxwriter/worksheet.h>
@@ -253,6 +255,21 @@ void::Workbook::MakeLeapYearCalendar(){
   Insert30Days(11);
   WorksheetPointer[12] = workbook_add_worksheet(workbook,"декабрь");
   Insert31Days(12);
+}
+
+void::Workbook::CreateQR(std::string Text){
+QRcode *QRcode = QRcode_encodeString(Text.c_str(),0,QR_ECLEVEL_M,QR_MODE_8,1);
+if (!QRcode) {
+std::cerr << "ошибка генерации кода!\n";
+return;
+}
+
+//вывод QR в косоль
+for (int y = 0; y < QRcode->width; y++) {
+  for (int x = 0; x < QRcode->width;x++) {
+  
+  }
+}
 }
 
 //Public функции

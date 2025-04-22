@@ -34,7 +34,7 @@ int main() {
       }
     if (n == 4) {
     Workbook QRTable;
-    
+    QRTable.CreateQRTable();
     goto ProgrammStart;
     }
     }

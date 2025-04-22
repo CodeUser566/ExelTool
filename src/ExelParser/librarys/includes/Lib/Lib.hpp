@@ -23,6 +23,7 @@ class Workbook
     void MakeLeapYearCalendar();
     void MakeMonthCalendar(int Year,int month);
     void SyllabusDay(int &row,int &col,std::string Day);
+    void CreateQR(std::string Text);
 
     public:
     Workbook();
@@ -33,5 +34,6 @@ class Workbook
     void CreateSyllabusTable();
     void Convert_CSV();
     void CreateCalendar();
+    void CreateQRTable();
 };
 #endif
