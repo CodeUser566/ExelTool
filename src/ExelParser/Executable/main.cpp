@@ -10,7 +10,7 @@ int main() {
   cout << "1)преобразовать CSV в Exel\n";
   cout << "2)Создать календарь\n";
   cout << "3)Создать Расписание\n";
-  cout << "4) Создать RPG таблицу персонажа\n";
+  cout << "4)Создать таблицу QR кодов\n";
   int n;
   cin >> n;
   while (n != 0) {
@@ -33,9 +33,9 @@ int main() {
       goto ProgrammStart;
       }
     if (n == 4) {
-    Workbook RPGCharacter;
-    RPGCharacter.CreateXlsxFile();
-    RPGCharacter.CreateCharacterStatsTable();
+    Workbook QRTable;
+    QRTable.CreateXlsxFile();
+    QRTable.CreateQRTable();
     }
     }
     cout << "End Programm, Bye!" << endl;

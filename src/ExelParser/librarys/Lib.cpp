@@ -449,24 +449,3 @@ void Workbook::CreateCalendar(){
     goto TryAgain;
 }
 }
-
-void Workbook::CreateCharacterStatsTable(){
-  int n;
-  Start:
-  std::cout << "для какой рпг вам нужен персонаж?:\n"
-  << "1)DnD\n" << "2)PathFinder\n";
-  std::cin >> n;
-  if (n == 1)
-  {
-
-  }
-  else if (n == 2)
-  {
-    
-  }
-  else {
-    std::cout << "Неправильный ввод! Введите значение заново.\n";
-    goto Start;
-  }
-  
-};

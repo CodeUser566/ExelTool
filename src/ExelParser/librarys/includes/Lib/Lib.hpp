@@ -30,6 +30,5 @@ class Workbook
     void CreateSyllabusTable();
     void Convert_CSV();
     void CreateCalendar();
-    void CreateCharacterStatsTable();
 };
 #endif
