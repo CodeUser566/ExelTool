@@ -4,7 +4,8 @@ add_library(lib)
 target_link_libraries(lib 
 PRIVATE
 libxlsxwriter::libxlsxwriter
-libqrencode::libqrencode)
+libqrencode::libqrencode
+PNG::PNG)
 
 #Добавляет в таргет исходные файлы
 target_sources(lib

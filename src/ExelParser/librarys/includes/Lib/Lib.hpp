@@ -1,7 +1,10 @@
 #include <fstream>
+#include <iostream>
 #include <map>
+#include <png.h>
+#include <pngconf.h>
 #include <xlsxwriter.h>
-#include <xlsxwriter/workbook.h>
+#include <qrencode.h>
 
 #ifndef WORKBOOK
 #define WORKBOOK

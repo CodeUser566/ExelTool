@@ -3,6 +3,7 @@ project(ExelParser LANGUAGES CXX)
 
 find_package(libxlsxwriter REQUIRED)
 find_package(libqrencode REQUIRED)
+find_package(PNG REQUIRED)
 
 
 #глобальные настройки с++ стандарта :

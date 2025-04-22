@@ -9,6 +9,7 @@ class ExampleRecipe(ConanFile):
     def requirements(self):
         self.requires("libxlsxwriter/1.1.9")
         self.requires("libqrencode/4.1.1")
+        self.requires("libpng/1.6.47")
 
     def layout(self):
         cmake_layout(self)

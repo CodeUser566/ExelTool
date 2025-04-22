@@ -9,4 +9,4 @@ PRIVATE
 Cmake_example::lib
 libxlsxwriter::libxlsxwriter
 libqrencode::libqrencode
-)
+PNG::PNG)
