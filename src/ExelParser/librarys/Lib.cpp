@@ -1,10 +1,15 @@
 #include <../includes/Lib/Lib.hpp>
+#include <csetjmp>
 #include <cstddef>
+#include <cstdio>
 #include <fstream>
+#include <ios>
 #include <iostream>
+#include <png.h>
 #include <pngconf.h>
 #include <qrencode.h>
 #include <string>
+#include <vector>
 #include <xlsxwriter/workbook.h>
 #include <xlsxwriter/worksheet.h>
 
@@ -257,20 +262,96 @@ void::Workbook::MakeLeapYearCalendar(){
   Insert31Days(12);
 }
 
-void::Workbook::CreateQR(std::string Text){
-QRcode *QRcode = QRcode_encodeString(Text.c_str(),0,QR_ECLEVEL_M,QR_MODE_8,1);
+bool::Workbook::CreateQR(std::string Text,std::string Filename){
+QRcode *QRcode = QRcode_encodeString(Text.c_str(),10,QR_ECLEVEL_M,QR_MODE_8,1);
 if (!QRcode) {
 std::cerr << "ошибка генерации кода!\n";
-return;
+return false;
 }
 
-//вывод QR в косоль
-for (int y = 0; y < QRcode->width; y++) {
-  for (int x = 0; x < QRcode->width;x++) {
-  
+//буфер изображения (RGBA)
+std::vector<unsigned char> imgDataBuffer(QRcode->width * QRcode->width * 4);
+
+for (int y = 0;y < QRcode->width;y++) {
+for (int x = 0;x < QRcode->width;x++) {
+  //булевая операция по распознаванию цвета
+  const bool isBlack = QRcode->data[y * QRcode->width + x] & 1;
+  const int Pixelindex = (y*QRcode->width + x) * 4;
+  if (isBlack) {
+    imgDataBuffer[Pixelindex + 0] = 0; //R
+    imgDataBuffer[Pixelindex + 1] = 0; //G
+    imgDataBuffer[Pixelindex + 2] = 0; //B
+    imgDataBuffer[Pixelindex + 3] = 255; //A
+  }else {
+    imgDataBuffer[Pixelindex + 0] = 255; //R
+    imgDataBuffer[Pixelindex + 1] = 255; //G
+    imgDataBuffer[Pixelindex + 2] = 255; //B
+    imgDataBuffer[Pixelindex + 3] = 255; //A
   }
 }
 }
+
+    // Сохранение в PNG
+    FILE* FilePointer = fopen(Filename.c_str(), "wb");
+    if (!FilePointer) {
+      std::cerr << "ошибка открытия файла!\n";
+      QRcode_free(QRcode);
+      return false;
+    }
+
+    png_structp png = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
+    if (!png) {
+      std::cerr << "Ошибка генерации PNG структуры!";
+      fclose(FilePointer);
+      QRcode_free(QRcode);
+      return false;
+    }
+    
+    png_infop info = png_create_info_struct(png);
+    if (!info) {
+      std::cerr << "Ошибка генерации PNG info структуры!";
+      png_destroy_write_struct(&png, NULL);
+      fclose(FilePointer);
+      QRcode_free(QRcode);
+      return false;
+    }
+
+    if (setjmp(png_jmpbuf(png))) {
+      png_destroy_write_struct(&png, &info);
+      fclose(FilePointer);
+      QRcode_free(QRcode);
+      return false;
+    }
+
+    png_init_io(png,FilePointer);
+    png_set_IHDR(
+      png, info,
+      QRcode->width, QRcode->width,
+      8, PNG_COLOR_TYPE_RGBA,
+      PNG_INTERLACE_NONE,
+      PNG_COMPRESSION_TYPE_DEFAULT,
+      PNG_FILTER_TYPE_DEFAULT
+    );
+
+    std::vector<png_bytep> RowPointers(QRcode->width);
+    for (int y = 0;y < QRcode->width; y++) {
+      RowPointers[y] = &imgDataBuffer[y* QRcode->width * 4];
+    }
+
+    // Запись данных 
+    png_write_info(png, info); //Заголовок
+    png_write_image(png, RowPointers.data()); //Запись пикселей 
+    png_write_end(png, NULL); //Завершение записи
+
+
+    // Очистка
+    png_destroy_write_struct(&png, &info);
+    fclose(FilePointer);
+    QRcode_free(QRcode);
+
+    return true;
+}
+
 
 //Public функции
 

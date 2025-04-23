@@ -1,8 +1,8 @@
 #include <fstream>
-#include <iostream>
 #include <map>
 #include <png.h>
 #include <pngconf.h>
+#include <string>
 #include <xlsxwriter.h>
 #include <qrencode.h>
 
@@ -23,7 +23,7 @@ class Workbook
     void MakeLeapYearCalendar();
     void MakeMonthCalendar(int Year,int month);
     void SyllabusDay(int &row,int &col,std::string Day);
-    void CreateQR(std::string Text);
+    bool CreateQR(std::string Text,std::string Filename);
 
     public:
     Workbook();
