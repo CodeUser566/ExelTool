@@ -23,7 +23,7 @@ class Workbook
     void MakeLeapYearCalendar();
     void MakeMonthCalendar(int Year,int month);
     void SyllabusDay(int &row,int &col,std::string Day);
-    bool CreateQR(std::string Text,std::string Filename);
+    bool CreateQR(std::string Text,std::string Filename,int ImgScale);
 
     public:
     Workbook();
