@@ -263,7 +263,9 @@ void::Workbook::MakeLeapYearCalendar(){
 }
 
 bool::Workbook::CreateQR(std::string Text,std::string Filename){
-QRcode *QRcode = QRcode_encodeString(Text.c_str(),10,QR_ECLEVEL_M,QR_MODE_8,1);
+
+  
+QRcode *QRcode = QRcode_encodeString(Text.c_str(),2,QR_ECLEVEL_M,QR_MODE_8,1);
 if (!QRcode) {
 std::cerr << "ошибка генерации кода!\n";
 return false;
@@ -545,5 +547,14 @@ void Workbook::CreateCalendar(){
   else {
     std::cout << "выберите 1 или 2\n";
     goto TryAgain;
+}
+}
+
+void Workbook::CreateQRTable(){
+std::cout << "Создание QR кода:\n";
+if (CreateQR("https://minifreemarket.com/cabinet","/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png")) {
+  std::cout << "Qr успешно создан!\n";
+}else {
+std::cerr << "ошибка создания QR!\n";
 }
 }
