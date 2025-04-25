@@ -552,7 +552,29 @@ void Workbook::CreateCalendar(){
 }
 
 void Workbook::CreateQRTable(){
-std::cout << "Создание QR кода:\n";
+  std::string Name;
+  std::string Email;
+  std::string Phone;
+  std::cout << "Введите ФИО, для Выхода введите 0:\n";
+  std::cin >> Name;
+  if (Name != "0") {
+    std::cout << "Введите Email:\n";
+    std::cin >> Email;
+    if (CreateQR(Email,"/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
+      std::cout << "Qr Успешно создан!\n";
+    }
+    else {std::cerr << "Ошибка создания QR!\n";}
+    std::cout << "Введите телефон:\n";
+    std::cin >> Phone;
+    if (CreateQR(Phone,"/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
+      std::cout << "Qr Успешно создан!\n";
+    }
+    else {std::cerr << "Ошибка создания QR!\n";}
+  }
+
+
+
+
 if (CreateQR("This a Test QR code!","/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
   std::cout << "Qr успешно создан!\n";
 }else {
