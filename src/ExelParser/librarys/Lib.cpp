@@ -1,17 +1,7 @@
 #include <../includes/Lib/Lib.hpp>
-#include <csetjmp>
-#include <cstddef>
-#include <cstdio>
-#include <fstream>
-#include <ios>
 #include <iostream>
-#include <png.h>
-#include <pngconf.h>
 #include <qrencode.h>
-#include <string>
 #include <vector>
-#include <xlsxwriter/workbook.h>
-#include <xlsxwriter/worksheet.h>
 
 
 
@@ -35,7 +25,6 @@ void Workbook::CreateXlsxFile(){
   const char * Workbookname = FileSavePath.c_str();
   workbook = workbook_new(Workbookname);
 }
-
 
 void Workbook::Insert29Days(int month){
   int row = 0;
