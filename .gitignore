@@ -6,3 +6,4 @@ conan/
 CMakeUserPresets.json
 идеи для проекта
 src/compile_commands.json
+QRcodes/

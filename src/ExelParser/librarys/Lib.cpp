@@ -555,29 +555,51 @@ void Workbook::CreateQRTable(){
   std::string Name;
   std::string Email;
   std::string Phone;
+  std::string Path;
+  std::string QRName;
+  WorksheetPointer[1] = workbook_add_worksheet(workbook,nullptr);
+  int count = 1;
+  int row = 0;
+  int col = 0;
+
+  worksheet_write_string(WorksheetPointer[1],row,col,"Менеджер",nullptr);
+  col++;
+  worksheet_write_string(WorksheetPointer[1],row,col,"QR-Телефон",nullptr);
+  col++;
+  worksheet_write_string(WorksheetPointer[1],row,col,"QR-Email",nullptr);
+  col=0;
+  row++;
+  
+  std:std::cout << "Введите адрес сохранения  QR кодов\n";
+  std::cin >> Path;
+  
+  Start:
   std::cout << "Введите ФИО, для Выхода введите 0:\n";
   std::cin >> Name;
   if (Name != "0") {
+    QRName = Path + "QR" + std::to_string(count) + ".png";
     std::cout << "Введите Email:\n";
     std::cin >> Email;
-    if (CreateQR(Email,"/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
+    worksheet_write_string(WorksheetPointer[1],row,col,Name.c_str(),nullptr);
+    col++;
+    if (CreateQR(Email,QRName.c_str(),4)) {
       std::cout << "Qr Успешно создан!\n";
     }
     else {std::cerr << "Ошибка создания QR!\n";}
+    count++;
+    worksheet_write_url(WorksheetPointer[1], row, col,QRName.c_str(),nullptr);
+    col++;
+    QRName = Path + "QR" + std::to_string(count) + ".png";
     std::cout << "Введите телефон:\n";
     std::cin >> Phone;
-    if (CreateQR(Phone,"/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
+    worksheet_write_url(WorksheetPointer[1], row, col,QRName.c_str(),nullptr);
+    col= 0;
+    row++;
+    if (CreateQR(Phone,QRName.c_str(),4)) {
       std::cout << "Qr Успешно создан!\n";
     }
-    else {std::cerr << "Ошибка создания QR!\n";}
+    else {std::cerr << "Ошибка создания QR!\n";} 
+    count++;
+    goto Start;
   }
-
-
-
-
-if (CreateQR("This a Test QR code!","/media/gorillabacteria/SSD_2/VScode_Projects/ExelParser/QRcodes/QR.png",4)) {
-  std::cout << "Qr успешно создан!\n";
-}else {
-std::cerr << "ошибка создания QR!\n";
-}
 }
